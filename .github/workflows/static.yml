@@ -35,7 +35,7 @@ jobs:
           node-version: 20
           cache: 'pnpm'
 
-      - name: Install dependencies and Build
+      - name: Install and Build
         run: |
           pnpm install
           pnpm run build
@@ -46,7 +46,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # É aqui que o GitHub vai buscar o seu index.html
+          # É aqui que seu Vite gera o site: dist/public
           path: './dist/public'
 
       - name: Deploy to GitHub Pages
