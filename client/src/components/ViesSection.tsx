@@ -1,9 +1,9 @@
 /* ============================================================
    VIESES FINANCEIROS — 20 vieses de Morgan Housel
-   Design: Cards grandes estilo "baralho de cartas" com flip 3D
-   Cada carta tem frente impactante e verso com explicação
+   Cards clicáveis abrem modal fullscreen com navegação por setas
    ============================================================ */
 import { useState, useRef, useEffect } from "react";
+import BiasModal from "./BiasModal";
 
 const biases = [
   {
@@ -168,8 +168,7 @@ const biases = [
   },
 ];
 
-function BiasCard({ bias, index }: { bias: typeof biases[0]; index: number }) {
-  const [flipped, setFlipped] = useState(false);
+function BiasCard({ bias, index, onClick }: { bias: typeof biases[0]; index: number; onClick: () => void }) {
   const [visible, setVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -185,95 +184,60 @@ function BiasCard({ bias, index }: { bias: typeof biases[0]; index: number }) {
   return (
     <div
       ref={ref}
-      className="flip-card h-64 cursor-pointer"
+      className="h-56 cursor-pointer group"
       style={{
         opacity: visible ? 1 : 0,
         transform: visible ? "translateY(0) scale(1)" : "translateY(40px) scale(0.9)",
         transition: `opacity 0.5s ease ${index * 0.05}s, transform 0.5s ease ${index * 0.05}s`,
       }}
-      onClick={() => setFlipped(!flipped)}
-      title="Clique para virar"
+      onClick={onClick}
     >
       <div
-        className="flip-card-inner w-full h-full"
-        style={{ transform: flipped ? "rotateY(180deg)" : "rotateY(0deg)" }}
+        className="w-full h-full flex flex-col justify-between p-5 border transition-all duration-300 group-hover:scale-105 group-hover:shadow-lg"
+        style={{
+          background: `linear-gradient(145deg, #141414 0%, #0e0e0e 100%)`,
+          borderColor: bias.color + "55",
+          boxShadow: `0 0 0 0px ${bias.color}00`,
+        }}
+        onMouseEnter={(e) => {
+          (e.currentTarget as HTMLElement).style.boxShadow = `0 0 20px ${bias.color}33, 0 8px 32px rgba(0,0,0,0.5)`;
+          (e.currentTarget as HTMLElement).style.borderColor = bias.color;
+        }}
+        onMouseLeave={(e) => {
+          (e.currentTarget as HTMLElement).style.boxShadow = `0 0 0 0px ${bias.color}00`;
+          (e.currentTarget as HTMLElement).style.borderColor = bias.color + "55";
+        }}
       >
-        {/* FRENTE */}
-        <div
-          className="flip-card-front w-full h-full flex flex-col justify-between p-5 border"
-          style={{
-            background: `linear-gradient(145deg, #141414 0%, #0e0e0e 100%)`,
-            borderColor: bias.color + "55",
-          }}
-        >
-          {/* Top row */}
-          <div className="flex items-start justify-between">
-            <span
-              className="font-mono-data text-4xl font-bold leading-none"
-              style={{ color: bias.color + "33" }}
-            >
-              {bias.num}
-            </span>
-            <span className="text-3xl">{bias.icon}</span>
-          </div>
-
-          {/* Center */}
-          <div>
-            <h3 className="font-display text-2xl text-white leading-tight mb-2">
-              {bias.name}
-            </h3>
-            <p className="text-xs leading-relaxed" style={{ color: bias.color + "aa" }}>
-              {bias.short}
-            </p>
-          </div>
-
-          {/* Bottom hint */}
-          <div className="flex items-center gap-2">
-            <div
-              className="w-full h-px"
-              style={{ background: `linear-gradient(90deg, ${bias.color}66, transparent)` }}
-            />
-            <span className="font-mono-data text-[9px] text-white/25 whitespace-nowrap tracking-wider">
-              CLIQUE
-            </span>
-          </div>
+        {/* Top row */}
+        <div className="flex items-start justify-between">
+          <span
+            className="font-mono-data text-4xl font-bold leading-none transition-colors duration-300"
+            style={{ color: bias.color + "33" }}
+          >
+            {bias.num}
+          </span>
+          <span className="text-3xl group-hover:scale-125 transition-transform duration-300">{bias.icon}</span>
         </div>
 
-        {/* VERSO */}
-        <div
-          className="flip-card-back w-full h-full flex flex-col justify-between p-5 border"
-          style={{
-            background: `linear-gradient(145deg, ${bias.color}18 0%, #0a0a0a 100%)`,
-            borderColor: bias.color,
-            boxShadow: `0 0 20px ${bias.color}33`,
-          }}
-        >
-          <div className="flex items-center gap-2">
-            <div
-              className="w-1.5 h-1.5 rounded-full animate-pulse"
-              style={{ backgroundColor: bias.color }}
-            />
-            <span
-              className="font-mono-data text-[10px] tracking-widest uppercase"
-              style={{ color: bias.color }}
-            >
-              Viés {bias.num}
-            </span>
-          </div>
-
-          <p className="text-white/85 text-sm leading-relaxed italic flex-1 flex items-center">
-            "{bias.detail}"
+        {/* Center */}
+        <div>
+          <h3 className="font-display text-2xl text-white leading-tight mb-2 group-hover:text-[#D4AF37] transition-colors duration-300">
+            {bias.name}
+          </h3>
+          <p className="text-xs leading-relaxed" style={{ color: bias.color + "aa" }}>
+            {bias.short}
           </p>
+        </div>
 
-          <div className="flex items-center gap-2">
-            <span className="font-mono-data text-[9px] text-white/25 tracking-wider">
-              CLIQUE PARA VOLTAR
-            </span>
-            <div
-              className="flex-1 h-px"
-              style={{ background: `linear-gradient(90deg, transparent, ${bias.color}66)` }}
-            />
-          </div>
+        {/* Bottom hint */}
+        <div className="flex items-center gap-2">
+          <div
+            className="w-full h-px transition-all duration-300"
+            style={{ background: `linear-gradient(90deg, ${bias.color}66, transparent)` }}
+          />
+          <span className="font-mono-data text-[9px] text-white/25 whitespace-nowrap tracking-wider group-hover:text-[#D4AF37] transition-colors duration-300">
+            CLIQUE
+          </span>
         </div>
       </div>
     </div>
@@ -281,6 +245,22 @@ function BiasCard({ bias, index }: { bias: typeof biases[0]; index: number }) {
 }
 
 export default function ViesSection() {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [currentBiasIndex, setCurrentBiasIndex] = useState(0);
+
+  const handleOpenModal = (index: number) => {
+    setCurrentBiasIndex(index);
+    setModalOpen(true);
+  };
+
+  const handleNextBias = () => {
+    setCurrentBiasIndex((prev) => (prev === biases.length - 1 ? 0 : prev + 1));
+  };
+
+  const handlePreviousBias = () => {
+    setCurrentBiasIndex((prev) => (prev === 0 ? biases.length - 1 : prev - 1));
+  };
+
   return (
     <section className="section-dark py-24 px-4 relative overflow-hidden">
       {/* Huge decorative background number */}
@@ -310,14 +290,19 @@ export default function ViesSection() {
             Esses são os 20 padrões de comportamento que controlam as decisões financeiras das pessoas — incluindo as suas. Cada equipe vai estudar e apresentar alguns deles.
           </p>
           <p className="font-mono-data text-xs text-[#39FF14] mt-3 tracking-wider animate-pulse">
-            ↓ Clique nas cartas para revelar o conceito
+            ↓ Clique nas cartas para abrir em fullscreen | Use setas para navegar
           </p>
         </div>
 
         {/* Cards grid */}
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
           {biases.map((bias, i) => (
-            <BiasCard key={i} bias={bias} index={i} />
+            <BiasCard
+              key={i}
+              bias={bias}
+              index={i}
+              onClick={() => handleOpenModal(i)}
+            />
           ))}
         </div>
 
@@ -337,6 +322,16 @@ export default function ViesSection() {
 
       {/* Neon line bottom */}
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent" />
+
+      {/* Modal */}
+      <BiasModal
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+        biases={biases}
+        currentIndex={currentBiasIndex}
+        onPrevious={handlePreviousBias}
+        onNext={handleNextBias}
+      />
     </section>
   );
 }

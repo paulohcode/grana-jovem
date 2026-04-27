@@ -3,6 +3,7 @@
    Monta todas as seções em ordem com scroll reveal
    ============================================================ */
 import { useEffect } from "react";
+import { useSectionNavigation } from "@/hooks/useSectionNavigation";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import TickerTape from "@/components/TickerTape";
@@ -18,6 +19,9 @@ import Footer from "@/components/Footer";
 import ViesSection from "@/components/ViesSection";
 
 export default function Home() {
+  // Enable section navigation with arrow keys
+  useSectionNavigation();
+
   // Initialize scroll reveal observer
   useEffect(() => {
     const observer = new IntersectionObserver(
