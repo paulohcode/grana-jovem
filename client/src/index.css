@@ -300,6 +300,94 @@
 }
 
 /* ============================================================
+   FLOATING MONEY ANIMATION
+   ============================================================ */
+@keyframes float-up {
+  0% {
+    transform: translateY(100vh) translateX(0) rotate(0deg) scale(1);
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  95% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(100px) rotate(360deg) scale(0.5);
+    opacity: 0;
+  }
+}
+
+.floating-money {
+  position: fixed;
+  font-size: clamp(20px, 4vw, 48px);
+  pointer-events: none;
+  z-index: 10;
+  font-weight: bold;
+}
+
+.floating-money.money-1 {
+  animation: float-up 8s ease-in infinite;
+  left: 5%;
+  animation-delay: 0s;
+}
+
+.floating-money.money-2 {
+  animation: float-up 10s ease-in infinite;
+  left: 15%;
+  animation-delay: 2s;
+}
+
+.floating-money.money-3 {
+  animation: float-up 9s ease-in infinite;
+  left: 25%;
+  animation-delay: 1s;
+}
+
+.floating-money.money-4 {
+  animation: float-up 11s ease-in infinite;
+  left: 35%;
+  animation-delay: 3s;
+}
+
+.floating-money.money-5 {
+  animation: float-up 8.5s ease-in infinite;
+  left: 45%;
+  animation-delay: 1.5s;
+}
+
+.floating-money.money-6 {
+  animation: float-up 10.5s ease-in infinite;
+  left: 55%;
+  animation-delay: 2.5s;
+}
+
+.floating-money.money-7 {
+  animation: float-up 9.5s ease-in infinite;
+  left: 65%;
+  animation-delay: 0.5s;
+}
+
+.floating-money.money-8 {
+  animation: float-up 11.5s ease-in infinite;
+  left: 75%;
+  animation-delay: 3.5s;
+}
+
+.floating-money.money-9 {
+  animation: float-up 8.8s ease-in infinite;
+  left: 85%;
+  animation-delay: 2s;
+}
+
+.floating-money.money-10 {
+  animation: float-up 10.2s ease-in infinite;
+  left: 95%;
+  animation-delay: 1s;
+}
+
+/* ============================================================
    PULSE ANIMATION (CTA button)
    ============================================================ */
 @keyframes neon-pulse {

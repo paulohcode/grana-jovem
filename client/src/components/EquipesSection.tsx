@@ -1,5 +1,6 @@
 /* ============================================================
    EQUIPES — As 12 equipes e seus temas
+   Cards com zoom, glow e animações ao hover
    ============================================================ */
 
 const TEAMS_BG =
@@ -51,22 +52,39 @@ export default function EquipesSection() {
           {teams.map((team, i) => (
             <div
               key={i}
-              className={`reveal card-vip p-5 border border-[#2A2A2A] rounded-none group cursor-default`}
-              style={{ transitionDelay: `${(i % 4) * 0.08}s` }}
+              className="reveal card-vip p-5 border border-[#2A2A2A] rounded-none group cursor-default transition-all duration-300 hover:scale-110 hover:border-[#D4AF37] hover:shadow-lg hover:bg-[#D4AF3708]"
+              style={{
+                transitionDelay: `${(i % 4) * 0.08}s`,
+                boxShadow: "0 0 0 0px #D4AF3700",
+              }}
+              onMouseEnter={(e) => {
+                const el = e.currentTarget as HTMLElement;
+                el.style.boxShadow = "0 0 20px #D4AF3744, 0 8px 32px rgba(0,0,0,0.5)";
+              }}
+              onMouseLeave={(e) => {
+                const el = e.currentTarget as HTMLElement;
+                el.style.boxShadow = "0 0 0 0px #D4AF3700";
+              }}
             >
               <div className="flex items-start justify-between mb-3">
-                <span className="font-display text-5xl text-[#D4AF3733] group-hover:text-[#D4AF37] transition-colors duration-300">
+                <span className="font-display text-5xl text-[#D4AF3733] group-hover:text-[#D4AF37] transition-all duration-300 group-hover:scale-125 group-hover:drop-shadow-lg">
                   {team.num}
                 </span>
-                <span className="text-2xl">{team.icon}</span>
+                <span className="text-2xl group-hover:scale-150 transition-transform duration-300 group-hover:rotate-12">
+                  {team.icon}
+                </span>
               </div>
-              <div className="font-mono-data text-[10px] text-[#D4AF37] tracking-widest uppercase mb-1">
+              <div className="font-mono-data text-[10px] text-[#D4AF37] tracking-widest uppercase mb-1 group-hover:text-[#39FF14] transition-colors duration-300">
                 {team.chapters}
               </div>
-              <h3 className="font-display text-lg text-white mb-2 leading-tight">{team.theme}</h3>
+              <h3 className="font-display text-lg text-white mb-2 leading-tight group-hover:text-[#D4AF37] transition-colors duration-300">
+                {team.theme}
+              </h3>
               <div className="flex items-center gap-2">
-                <div className="w-1.5 h-1.5 rounded-full bg-[#39FF14]" />
-                <p className="text-white/50 text-xs">{team.task}</p>
+                <div className="w-1.5 h-1.5 rounded-full bg-[#39FF14] group-hover:bg-[#D4AF37] transition-colors duration-300" />
+                <p className="text-white/50 text-xs group-hover:text-white/70 transition-colors duration-300">
+                  {team.task}
+                </p>
               </div>
             </div>
           ))}

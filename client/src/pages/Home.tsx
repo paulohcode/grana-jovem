@@ -17,6 +17,7 @@ import CountdownSection from "@/components/CountdownSection";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 import ViesSection from "@/components/ViesSection";
+import FloatingMoney from "@/components/FloatingMoney";
 
 export default function Home() {
   // Enable section navigation with arrow keys
@@ -44,7 +45,8 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#0A0A0A] text-white overflow-x-hidden">
+    <div className="min-h-screen bg-[#0A0A0A] text-white overflow-x-hidden relative">
+      <FloatingMoney />
       <Navbar />
       <HeroSection />
       <TickerTape />
