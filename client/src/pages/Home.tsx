@@ -3,6 +3,7 @@
    Monta todas as seções em ordem com scroll reveal
    ============================================================ */
 import { useEffect } from "react";
+import { useAuth } from "@/_core/hooks/useAuth";
 import { useSectionNavigation } from "@/hooks/useSectionNavigation";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
@@ -20,6 +21,10 @@ import ViesSection from "@/components/ViesSection";
 import FloatingMoney from "@/components/FloatingMoney";
 
 export default function Home() {
+  // The userAuth hooks provides authentication state
+  // To implement login/logout functionality, simply call logout() or redirect to getLoginUrl()
+  const { user, loading, error, isAuthenticated, logout } = useAuth();
+
   // Enable section navigation with arrow keys
   useSectionNavigation();
 
