@@ -37,7 +37,7 @@ jobs:
 
       - name: Install and Build
         run: |
-          pnpm install
+          pnpm install --no-frozen-lockfile
           pnpm run build
 
       - name: Setup Pages
@@ -46,7 +46,6 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # É aqui que seu Vite gera o site: dist/public
           path: './dist/public'
 
       - name: Deploy to GitHub Pages
