@@ -1,3 +1,4 @@
+# Workflow completo para Deploy no GitHub Pages
 name: Deploy static content to Pages
 
 on:
@@ -37,6 +38,7 @@ jobs:
 
       - name: Install and Build
         run: |
+          # O comando abaixo corrige o erro de mismatch do lockfile
           pnpm install --no-frozen-lockfile
           pnpm run build
 
@@ -46,6 +48,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
+          # Caminho exato onde o seu Vite gera os arquivos (dist/public)
           path: './dist/public'
 
       - name: Deploy to GitHub Pages
