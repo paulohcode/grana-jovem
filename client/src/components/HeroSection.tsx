@@ -169,22 +169,12 @@ export default function HeroSection() {
           </p>
         </div>
 
-        {/* CTA Button */}
+        {/* Scroll indicator */}
         <div
-          className={`mt-10 transition-all duration-1000 delay-700 ${
-            titleVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+          className={`mt-14 flex flex-col items-center gap-2 animate-bounce transition-all duration-1000 delay-700 ${
+            titleVisible ? "opacity-100" : "opacity-0"
           }`}
         >
-          <button
-            onClick={scrollToNext}
-            className="btn-neon-pulse bg-[#39FF14] text-[#0A0A0A] font-display text-xl tracking-widest px-10 py-4 rounded-none hover:bg-[#FFD700] transition-colors duration-300"
-          >
-            QUERO PARTICIPAR
-          </button>
-        </div>
-
-        {/* Scroll indicator */}
-        <div className="mt-16 flex flex-col items-center gap-2 animate-bounce">
           <span className="font-mono-data text-xs text-white/40 tracking-widest">SCROLL</span>
           <div className="w-px h-8 bg-gradient-to-b from-[#D4AF37] to-transparent" />
         </div>

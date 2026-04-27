@@ -92,7 +92,7 @@ export default function AtividadesSection() {
           {activities.map((act, i) => (
             <div
               key={i}
-              className={`reveal flip-card h-52`}
+              className={`reveal flip-card hover-flip h-52`}
               style={{ transitionDelay: `${(i % 4) * 0.1}s` }}
             >
               <div className="flip-card-inner w-full h-full">

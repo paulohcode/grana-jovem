@@ -69,7 +69,7 @@ export default function CTASection() {
           </div>
         </div>
 
-        {/* Final CTA */}
+        {/* Final statement */}
         <div className="reveal text-center">
           <div className="mb-6">
             <p className="font-display text-[clamp(28px,5vw,56px)] text-white leading-tight">
@@ -78,14 +78,6 @@ export default function CTASection() {
               pensa sobre{" "}
               <span className="text-[#39FF14] neon-glow">dinheiro</span>?
             </p>
-          </div>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <button
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="btn-neon-pulse bg-[#39FF14] text-[#0A0A0A] font-display text-xl tracking-widest px-12 py-4 rounded-none hover:bg-[#FFD700] transition-colors duration-300 w-full sm:w-auto"
-            >
-              SIM, QUERO PARTICIPAR!
-            </button>
           </div>
           <p className="font-mono-data text-xs text-white/30 mt-4 tracking-wider">
             SESI · 2º Ano do Ensino Médio · Início: 06/05/2026

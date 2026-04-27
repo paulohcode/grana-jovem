@@ -64,12 +64,7 @@ export default function Navbar() {
               {item.label}
             </button>
           ))}
-          <button
-            onClick={() => handleNav("#countdown")}
-            className="font-mono-data text-xs bg-[#39FF14] text-[#0A0A0A] px-4 py-2 tracking-widest uppercase hover:bg-[#FFD700] transition-colors duration-200"
-          >
-            Participar
-          </button>
+
         </div>
 
         {/* Mobile menu button */}
@@ -101,12 +96,7 @@ export default function Navbar() {
               {item.label}
             </button>
           ))}
-          <button
-            onClick={() => handleNav("#countdown")}
-            className="mt-3 w-full font-mono-data text-xs bg-[#39FF14] text-[#0A0A0A] px-4 py-3 tracking-widest uppercase"
-          >
-            Participar
-          </button>
+
         </div>
       )}
     </nav>
