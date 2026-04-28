@@ -4,6 +4,7 @@
 
 const teachers = [
   { name: "Caio", subject: "Filosofia" },
+  { name: "Gustavo", subject: "Sociologia" },
   { name: "Camila", subject: "Matemática" },
   { name: "Dayane", subject: "Artes" },
   { name: "Paulo", subject: "Dev. de Sistemas" },
