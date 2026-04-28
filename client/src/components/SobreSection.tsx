@@ -11,8 +11,7 @@ const stats = [
 
 const disciplines = [
   { name: "Filosofia", teacher: "Caio", color: "#D4AF37" },
-  { name: "Matemática", teacher: "Camila", color: "#39FF14" },
-  { name: "Artes", teacher: "Dayane", color: "#D4AF37" },
+  { name: "Matemática", teacher: "Camila", color: "#39FF14" },  { name: "Artes", teacher: "Dayane", color: "#D4AF37" },
   { name: "Sociologia", teacher: "Caio", color: "#39FF14" },
   { name: "Dev. de Sistemas", teacher: "Paulo", color: "#D4AF37" },
 ];
