@@ -79,9 +79,9 @@ export default function CountdownSection() {
             <span className="text-xl">🏫</span>
             <div className="text-left">
               <div className="font-mono-data text-[10px] text-[#39FF14] tracking-widest uppercase">
-                Escola
+                Instituição
               </div>
-              <div className="font-display text-xl text-white">SESI</div>
+              <div className="font-display text-xl text-white">Colégio Sesi</div>
             </div>
           </div>
         </div>

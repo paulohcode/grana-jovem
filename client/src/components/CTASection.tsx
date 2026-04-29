@@ -80,7 +80,7 @@ export default function CTASection() {
             </p>
           </div>
           <p className="font-mono-data text-xs text-white/30 mt-4 tracking-wider">
-            SESI · 2º Ano do Ensino Médio · Início: 06/05/2026
+            Colégio Sesi · 2º Ano do Ensino Médio · Início: 06/05/2026
           </p>
         </div>
       </div>

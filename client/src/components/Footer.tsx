@@ -19,7 +19,7 @@ export default function Footer() {
           <div>
             <div className="font-display text-3xl text-gradient-gold mb-2">GRANA JOVEM</div>
             <div className="font-mono-data text-xs text-white/30 tracking-widest uppercase mb-4">
-              SESI · Oficina de Aprendizagem
+              Colégio Sesi · Oficina de Aprendizagem
             </div>
             <p className="text-white/40 text-xs leading-relaxed">
               Uma experiência interdisciplinar baseada em{" "}
@@ -60,7 +60,7 @@ export default function Footer() {
 
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="font-mono-data text-[10px] text-white/20 tracking-wider">
-            © 2026 SESI · Grana Jovem · 2º Ano do Ensino Médio
+            © 2026 Colégio Sesi · Grana Jovem · 2º Ano do Ensino Médio
           </p>
           <div className="flex items-center gap-2">
             <div className="w-1.5 h-1.5 rounded-full bg-[#39FF14] animate-pulse" />

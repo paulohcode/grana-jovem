@@ -127,7 +127,7 @@ export default function HeroSection() {
         >
           <span className="w-2 h-2 rounded-full bg-[#39FF14] neon-glow animate-pulse" />
           <span className="font-mono-data text-xs text-[#D4AF37] tracking-widest uppercase">
-            SESI · 2º Ano do Ensino Médio · 2026
+            Colégio Sesi · 2º Ano do Ensino Médio · 2026
           </span>
         </div>
 

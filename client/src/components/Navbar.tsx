@@ -48,7 +48,7 @@ export default function Navbar() {
               GRANA JOVEM
             </span>
             <span className="font-mono-data text-[10px] text-white/30 ml-2 tracking-widest">
-              SESI
+              Colégio Sesi
             </span>
           </div>
         </div>
